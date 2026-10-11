@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Feliz cumpleaños, mi amor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- ============ MÚSICA ============
+ Tu canción sigue siendo audio/musica.mp3 (misma ruta de siempre). -->
+<audio id="bgm" src="lilpepe.mp3" loop preload="auto"></audio>
+<button id="snd" type="button" aria-label="Activar o silenciar la música">🔇</button>
+<div id="hint" role="status">♪ Tocá en cualquier parte para encender la música ♪</div>
+
+<main id="stage">
+
+<!-- ===== ESCENA 1: EL COMIENZO DE UNA HISTORIA ===== -->
+<section class="page active" id="s0" aria-label="Escena 1">
+  <div class="moon" aria-hidden="true"></div>
+  <div class="orn">❦ ✿ ❦</div>
+  <p class="script small">Hoy el mundo celebra porque naciste vos</p>
+  <h1 class="title">Feliz Cumpleaños</h1>
+  <!-- PERSONALIZÁ: el nombre de tu novia -->
+  <h2 class="name">Mi Amor</h2>
+  <!-- PERSONALIZÁ: frase poética de apertura -->
+  <p class="lead">Entre todas las estrellas del cielo, hay una que brilla distinto: la que nació hoy.</p>
+  <button id="start" class="cta" type="button">Descubrí tu sorpresa</button>
+</section>
+
+<!-- ===== ESCENA 2: EL CORAZÓN QUE HABLA TODOS LOS IDIOMAS ===== -->
+<section class="page" id="s1" aria-label="Escena 2">
+  <h1 class="title sm">El corazón que habla todos los idiomas</h1>
+  <canvas id="heart" role="button" tabindex="0" aria-label="Corazón giratorio de te amo en distintos idiomas. Tocalo para ver un mensaje"></canvas>
+  <p id="hmsg" class="hmsg script" aria-live="polite">Cada palabra de este corazón es una forma distinta de decir lo mismo: que te amo con todo lo que soy.</p>
+  <p class="task" id="t1">✧ Tocá el corazón para escuchar lo que tiene que decirte ✧</p>
+</section>
+
+<!-- ===== GALERÍA (sección original) ===== -->
+<section class="page" id="s2" aria-label="Escena 3: nuestros momentos">
+  <div class="orn top">❀ ❦ ❀</div>
+  <h1 class="title sm">Nuestros momentos</h1>
+  <p class="script small">Cada foto es un pedacito de mi corazón</p>
+
+  <!-- FOTO ESPECIAL: sus lindos ojitos. Archivo: img/ojitos.jpg (ideal horizontal, 16:9 o similar) -->
+  <figure class="frame eyes">
+    <span class="ph">👁 Aquí van tus lindos ojitos<br><small>img/eyes.jpeg</small></span>
+    <img src="eyes.jpg" alt="Sus ojitos" onerror="this.remove()">
+    <figcaption>Los ojos que me hicieron perderme ♥</figcaption>
+  </figure>
+
+  <!-- FOTOS CASUALES: img/foto1.jpg ... img/foto6.jpg (ideal vertical 4:5; se recortan solas sin deformarse) -->
+  <div class="grid">
+    <figure class="frame"><span class="ph">📷 foto1.jpg</span><img src="eren.jpeg" alt="Foto 1" onerror="this.remove()"><figcaption>Mi sonrisa favorita</figcaption></figure>
+    <figure class="frame"><span class="ph">📷 foto2.jpg</span><img src="k1.jpeg" alt="Foto 2" onerror="this.remove()"><figcaption>Tan vos</figcaption></figure>
+    <figure class="frame"><span class="ph">📷 foto3.jpg</span><img src="mikasa.jpeg" alt="Foto 3" onerror="this.remove()"><figcaption>Mi lugar favorito</figcaption></figure>
+    <figure class="frame"><span class="ph">📷 foto4.jpg</span><img src="k2.jpeg" alt="Foto 4" onerror="this.remove()"><figcaption>Pura ternura</figcaption></figure>
+    <figure class="frame"><span class="ph">📷 foto5.jpg</span><img src="k3.jpeg" alt="Foto 5" onerror="this.remove()"><figcaption>Mi mundo entero</figcaption></figure>
+    <figure class="frame"><span class="ph">📷 foto6.jpg</span><img src="k4.jpeg" alt="Foto 6" onerror="this.remove()"><figcaption>Siempre vos</figcaption></figure>
+  </div>
+  <div class="orn">✧ ♥ ✧</div>
+</section>
+
+<!-- ===== ESCENA 3: LA CAJA DE REGALO MÁGICA ===== -->
+<section class="page" id="s3" aria-label="Escena 4: regalo">
+  <h1 class="title sm">Un regalo para vos</h1>
+  <button id="gift" class="gift" type="button" aria-label="Abrir la caja de regalo">
+    <span class="beam"></span><span class="bx"></span>
+    <span class="lid"><span class="bow"></span></span>
+  </button>
+  <!-- PERSONALIZÁ: dedicatoria que aparece al abrir la caja -->
+  <p id="dedic" class="dedic script">Para la mujer que convirtió mi vida en un cuento: en tu cumpleaños te regalo mi corazón, mi tiempo y todas las estrellas que pueda alcanzar.</p>
+  <p class="task" id="t3">✧ Tocá la caja para abrirla ✧</p>
+</section>
+
+<!-- ===== ESCENA 4: LA CARTA (textos originales) ===== -->
+<section class="page" id="s4" aria-label="Escena 5: carta">
+  <button id="env" class="env" type="button" aria-label="Abrir el sobre"><span class="flap"></span><span class="seal">♥</span></button>
+  <article id="letter" class="letter" hidden>
+    <!-- PERSONALIZÁ: toda la carta. Cada <p> aparece con una animación suave -->
+    <h2 class="script big">Mi amor:</h2>
+    <p>Hoy es tu día, y quería que tuvieras algo hecho con mis propias manos y con todo mi cariño. Porque no existe regalo que pueda igualar lo que vos me das cada día.</p>
+    <p>Gracias por tu risa que ilumina hasta mis días más grises, por tu paciencia, por tu ternura y por hacerme sentir en casa cuando estoy a tu lado.</p>
+    <p>Quiero seguir celebrándote todos los años, aprender un poquito más de vos cada mañana y cuidar nuestra historia como lo más valioso que tengo.</p>
+    <p>Que este nuevo año de vida te traiga paz, sueños cumplidos y todo el amor que merecés. Y que yo pueda estar ahí para verlo, de tu mano.</p>
+    <p>Feliz cumpleaños, mi vida. Te amo hoy, mañana y siempre.</p>
+    <p class="sign script">Para siempre tuyo,<br><span>Elenita ♥</span></p>
+  </article>
+  <p class="task" id="t4">✧ Tocá el sobre para abrirlo ✧</p>
+</section>
+
+<!-- ===== ESCENA 5: EL MENSAJE SECRETO ENTRE LAS ESTRELLAS ===== -->
+<section class="page" id="s5" aria-label="Escena 6: mensaje secreto">
+  <h1 class="title sm">Entre las estrellas</h1>
+  <svg id="const" viewBox="0 0 300 300" role="img" aria-label="Constelación">
+    <polyline class="ln" points="30,250 80,200 130,225 150,150 215,185 260,110 225,50"/>
+    <polyline class="ln" points="150,150 105,95 150,45 195,95 150,150"/>
+    <g fill="#fff">
+      <circle cx="30" cy="250" r="3"/><circle cx="80" cy="200" r="2.5" class="tw"/><circle cx="130" cy="225" r="3"/>
+      <circle cx="215" cy="185" r="3" class="tw"/><circle cx="260" cy="110" r="2.5"/><circle cx="225" cy="50" r="3" class="tw"/>
+      <circle cx="105" cy="95" r="2.5"/><circle cx="150" cy="45" r="3" class="tw"/><circle cx="195" cy="95" r="2.5"/>
+    </g>
+    <g id="sp" tabindex="0" role="button" aria-label="Estrella especial">
+      <circle cx="150" cy="150" r="30" fill="transparent"/>
+      <polygon points="150,128 157,144 175,144 161,155 167,173 150,162 133,173 139,155 125,144 143,144"/>
+    </g>
+  </svg>
+  <p class="task" id="t5">✧ Una estrella duerme en el centro. Despertala cuando hayas recorrido todo ✧</p>
+  <div id="secret" class="secret" aria-live="polite">
+    <!-- PERSONALIZÁ: frase poética y mensaje final -->
+    <p class="script poem">De todas las constelaciones que existen, mi favorita es la que dibujan tus lunares, tu risa y tus ojitos.</p>
+    <p class="final">Feliz cumpleaños, mi vida. Te amo hoy, mañana y siempre ♥</p>
+    <button id="again" class="cta" type="button" hidden>Volver a recorrer el cielo</button>
+  </div>
+</section>
+
+</main>
+
+<nav id="nav" aria-label="Navegación entre escenas">
+  <div id="bar"><b></b></div>
+  <button id="prev" type="button" aria-label="Escena anterior">‹ Volver</button>
+  <div id="dots"></div>
+  <button id="next" type="button" aria-label="Escena siguiente">Siguiente ›</button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
